@@ -1,0 +1,3 @@
+method,completed_trials,best_trial,validation_mae
+TPE,25,23,3855306.8351432416
+RandomSampler,25,12,3982546.1137468223

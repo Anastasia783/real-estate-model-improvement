@@ -1,0 +1,5 @@
+outs:
+- md5: cf680c1205623fc541543ed46857d509
+  size: 397792
+  hash: md5
+  path: candidate_cv_best.joblib

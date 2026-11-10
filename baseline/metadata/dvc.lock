@@ -1,0 +1,95 @@
+schema: '2.0'
+stages:
+  export_data:
+    cmd: python -m part2_dvc.scripts.export_data
+    deps:
+    - path: part1_airlfow/plugins/db_utils.py
+      hash: md5
+      md5: a6759ff4fdcfe3c75f659449678e4372
+      size: 590
+    - path: part2_dvc/scripts/export_data.py
+      hash: md5
+      md5: b879e50befd601cd02f42b4e19455bf4
+      size: 1670
+    outs:
+    - path: part2_dvc/data/flats_clean.parquet
+      hash: md5
+      md5: b81b1550e46246d0db32d25985557655
+      size: 3503825
+  prepare_data:
+    cmd: python -m part2_dvc.scripts.prepare_data
+    deps:
+    - path: part2_dvc/data/flats_clean.parquet
+      hash: md5
+      md5: b81b1550e46246d0db32d25985557655
+      size: 3503825
+    - path: part2_dvc/scripts/prepare_data.py
+      hash: md5
+      md5: 314fec4877ca4a7a38fd5c30486ae7f7
+      size: 2785
+    params:
+      part2_dvc/params.yaml:
+        split:
+          test_size: 0.2
+          random_state: 42
+    outs:
+    - path: part2_dvc/data/test.parquet
+      hash: md5
+      md5: 1fbade3d9e2e058c2708ed562889593d
+      size: 716110
+    - path: part2_dvc/data/train.parquet
+      hash: md5
+      md5: 7970a3193de1bbae536f6c46d783b15e
+      size: 2824461
+  train:
+    cmd: python -m part2_dvc.scripts.train
+    deps:
+    - path: part2_dvc/data/train.parquet
+      hash: md5
+      md5: 7970a3193de1bbae536f6c46d783b15e
+      size: 2824461
+    - path: part2_dvc/scripts/train.py
+      hash: md5
+      md5: 13e9e7d3880a580177c3353d29afbbd1
+      size: 1917
+    params:
+      part2_dvc/params.yaml:
+        model:
+          loss: squared_error
+          learning_rate: 0.1
+          max_iter: 200
+          max_leaf_nodes: 31
+          l2_regularization: 1.0
+          categorical_features:
+          - building_type_int
+          early_stopping: false
+          random_state: 42
+    outs:
+    - path: part2_dvc/models/model.joblib
+      hash: md5
+      md5: a5661b774c77cf52fb57d8e1f10b8ee4
+      size: 752704
+  evaluate:
+    cmd: python -m part2_dvc.scripts.evaluate
+    deps:
+    - path: part2_dvc/data/test.parquet
+      hash: md5
+      md5: 1fbade3d9e2e058c2708ed562889593d
+      size: 716110
+    - path: part2_dvc/data/train.parquet
+      hash: md5
+      md5: 7970a3193de1bbae536f6c46d783b15e
+      size: 2824461
+    - path: part2_dvc/models/model.joblib
+      hash: md5
+      md5: a5661b774c77cf52fb57d8e1f10b8ee4
+      size: 752704
+    - path: part2_dvc/scripts/evaluate.py
+      hash: md5
+      md5: d903b103059d92be9b58677c277ef48b
+      size: 2703
+    outs:
+    - path: part2_dvc/metrics/metrics.json
+      hash: md5
+      md5: 48aa2401227f58fb553566e862efa954
+      size: 268

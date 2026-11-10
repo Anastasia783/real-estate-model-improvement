@@ -1,0 +1,5 @@
+[core]
+    remote = storage
+['remote "storage"']
+    url = s3://s3-student-mle-20260928-5d8fc4bb4e/real-estate-improvement-dvc
+    endpointurl = https://storage.yandexcloud.net

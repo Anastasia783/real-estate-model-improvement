@@ -1,0 +1,40 @@
+{
+  "study_name": "stage5_tpe_selected19",
+  "method": "TPESampler",
+  "metric": "validation_mae",
+  "direction": "minimize",
+  "best_trial_number": 23,
+  "best_validation_mae": 3855306.8351432416,
+  "best_params": {
+    "loss": "absolute_error",
+    "learning_rate": 0.15620170266229988,
+    "max_iter": 400,
+    "max_leaf_nodes": 55,
+    "max_depth": 12,
+    "min_samples_leaf": 40,
+    "l2_regularization": 0.004372456004508771
+  },
+  "completed_trials": 25,
+  "features": [
+    "numeric__floor",
+    "numeric__rooms",
+    "numeric__build_year",
+    "numeric__flats_count",
+    "numeric__floors_total",
+    "numeric__total_area",
+    "numeric__latitude",
+    "numeric__ceiling_height",
+    "categorical__building_type_int_1",
+    "categorical__building_type_int_2",
+    "categorical__building_type_int_3",
+    "categorical__building_type_int_4",
+    "binary__is_apartment",
+    "binary__has_elevator",
+    "polynomial__total_area rooms",
+    "polynomial__total_area ceiling_height",
+    "polynomial__rooms^2",
+    "polynomial__rooms ceiling_height",
+    "binned__longitude"
+  ],
+  "optuna_version": "4.5.0"
+}

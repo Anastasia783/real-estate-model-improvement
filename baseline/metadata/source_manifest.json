@@ -1,0 +1,42 @@
+﻿[
+    {
+        "source_path":  ".local\\real_estate.db",
+        "sha256":  "E9A5587DDD9C9CA8A85894B599762CAEEA4EF039C4127179255249D96C78D25D"
+    },
+    {
+        "source_path":  "part2_dvc\\data\\flats_clean.parquet",
+        "sha256":  "F692C87E42B05FDBCFDE53FFEE4DD816DC7180C5F7BF0EB9DC005DA8DCBDF5C5"
+    },
+    {
+        "source_path":  "part2_dvc\\data\\train.parquet",
+        "sha256":  "E03AA071701F4BC15D80A6CA645A3A6759CCE44AF1B5F636613BBA8092A899A0"
+    },
+    {
+        "source_path":  "part2_dvc\\data\\test.parquet",
+        "sha256":  "37208C5BD6275FD1F3138C9D1C0D42A5EA866A158F1E960D1F29AC02AF50D956"
+    },
+    {
+        "source_path":  "part2_dvc\\models\\model.joblib",
+        "sha256":  "29E218FFCD0C3812060D37ED63176ACDE4496C2B70703435CF67E2062664D17F"
+    },
+    {
+        "source_path":  "part2_dvc\\metrics\\metrics.json",
+        "sha256":  "BD71C3CB26453F87ABB9EC1C2C7B3B43139223283E60D125CA5C431F40419C96"
+    },
+    {
+        "source_path":  "part2_dvc\\params.yaml",
+        "sha256":  "B2E356ADD145982A5F69559E0E83F52A1CB5F69ABA2746A781DBA2ADEDDE45BA"
+    },
+    {
+        "source_path":  "part2_dvc\\requirements.txt",
+        "sha256":  "A3E3E35F6216AD3C5C32890FA9C632ED959E3C416E7F89477B8CDF60633EB3D8"
+    },
+    {
+        "source_path":  "part2_dvc\\dvc.yaml",
+        "sha256":  "7B6D5C00F339CC02096CF341BC8B769B24E90888B2693BF5278DB27E31334793"
+    },
+    {
+        "source_path":  "part2_dvc\\dvc.lock",
+        "sha256":  "4F3E8123D25898B0AF5892C38ECFECE63D062E99676FBABB17416ECD64FDEDFC"
+    }
+]

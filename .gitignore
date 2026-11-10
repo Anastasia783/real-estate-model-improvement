@@ -26,3 +26,11 @@ mlartifacts/
 *.log
 
 .dvc/config.local
+
+#Таблицы результатов этапов 4–5
+!/model_improvement/stage4_artifacts/*.csv
+!/model_improvement/stage5_artifacts/*.csv 
+
+#Локальные контрольные точки этапа 5
+/model_improvement/stage5_artifacts/*_checkpoint.joblib
+/model_improvement/stage5_artifacts/*_checkpoint.pkl

@@ -1,0 +1,47 @@
+stages:
+  export_data:
+    wdir: ..
+    cmd: python -m part2_dvc.scripts.export_data
+    deps:
+      - part2_dvc/scripts/export_data.py
+      - part1_airlfow/plugins/db_utils.py
+    outs:
+      - part2_dvc/data/flats_clean.parquet
+    always_changed: true
+
+  prepare_data:
+    wdir: ..
+    cmd: python -m part2_dvc.scripts.prepare_data
+    deps:
+      - part2_dvc/scripts/prepare_data.py
+      - part2_dvc/data/flats_clean.parquet
+    params:
+      - part2_dvc/params.yaml:
+          - split
+    outs:
+      - part2_dvc/data/train.parquet
+      - part2_dvc/data/test.parquet
+
+  train:
+    wdir: ..
+    cmd: python -m part2_dvc.scripts.train
+    deps:
+      - part2_dvc/scripts/train.py
+      - part2_dvc/data/train.parquet
+    params:
+      - part2_dvc/params.yaml:
+          - model
+    outs:
+      - part2_dvc/models/model.joblib
+
+  evaluate:
+    wdir: ..
+    cmd: python -m part2_dvc.scripts.evaluate
+    deps:
+      - part2_dvc/scripts/evaluate.py
+      - part2_dvc/data/train.parquet
+      - part2_dvc/data/test.parquet
+      - part2_dvc/models/model.joblib
+    metrics:
+      - part2_dvc/metrics/metrics.json:
+          cache: false
